@@ -1,9 +1,10 @@
-import React from 'react';
+ 
+import Home from '../Components/Home';
 
 const Layout = () => {
     return (
         <div>
-            <h1>This is home page</h1>
+          <Home></Home>
         </div>
     );
 };
