@@ -23,11 +23,11 @@ const Navbar = () => {
                 <div className="flex-1">
                     <a className="btn gap-0 btn-ghost text-3xl"><span className="text-secondary">Byte</span ><span className="text-primary">Blaze</span></a>
                 </div>
-                <div className="flex-none">
+                <div className="md:flex flex-none hidden">
                     <ul className="menu menu-horizontal px-1">
-                        <NavLink><li className="font-bold"><a>Home</a></li> </NavLink>
-                        <NavLink><li className="font-bold"><a>Blogs</a></li> </NavLink>
-                        <NavLink><li className="font-bold"><a>BookMarks</a></li> </NavLink>
+                        <NavLink to='/' className={({isActive})=> isActive?'text-primary font-bold':'font-bold'}><li  className="font-bold"><a>Home</a></li> </NavLink>
+                        <NavLink to='/blogs' className={({isActive})=> isActive?'text-primary  font-bold':' font-bold'}><li  ><a>Blogs</a></li> </NavLink>
+                        <NavLink to='/bookmarks' className={({isActive})=> isActive?'text-primary  font-bold':' font-bold'}><li ><a>BookMarks</a></li> </NavLink>
                     </ul>
                 </div>
                 <label  className="grid cursor-pointer place-items-center">

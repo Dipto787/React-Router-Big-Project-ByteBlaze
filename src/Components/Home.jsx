@@ -11,12 +11,11 @@ import Hero from "./Hero";
                 <Navbar></Navbar>
             </div> 
 
-          <div className="min-h-[calc()]">
+          <div className=" min-h-[calc(100vh-117px)] ">
           <Outlet></Outlet>
           </div>
-        <div className="">
-            <Hero></Hero>
-        </div>
+        
+         
            <div className=" ">
            <Footer></Footer>
            </div>
