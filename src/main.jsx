@@ -11,7 +11,8 @@ import Bookmarks from './Components/Bookmarks';
 import BlogDetails from './Components/BlogDetails';
 import Content from './Components/Content';
 import Author from './Components/Author';
-
+import   { Toaster } from 'react-hot-toast';
+import React from 'react';
 let router=createBrowserRouter([
   {
      path:'/',
@@ -38,6 +39,7 @@ let router=createBrowserRouter([
           },
           {
             path:'author',
+            loader:({params})=>fetch(`https://dev.to/api/articles/${params?.id}`),
             element:<Author></Author>
           }
         ]
@@ -52,7 +54,8 @@ let router=createBrowserRouter([
  
 
 createRoot(document.getElementById('root')).render(
- <RouterProvider router={router}>
-
- </RouterProvider>
+  <React.StrictMode>
+    <Toaster />
+    <RouterProvider router={router} />
+  </React.StrictMode>
 )

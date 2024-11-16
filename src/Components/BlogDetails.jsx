@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { NavLink, Outlet, useLoaderData } from "react-router-dom";
+import { MdBookmarkAdd } from "react-icons/md"; 
+import { setBlogDataOnLocalStorage } from "./BookmarkStored";
 
 const BlogDetails = () => {
     let [active,setActive]=useState(0);
     let blogDetailData = useLoaderData();
     let { title, reading_time_minutes, published_at, public_reactions_count, comments_count, tags, body_html, cover_image } = blogDetailData;
-    console.log(blogDetailData)
+    let handleBookMark=blog=>{ 
+        setBlogDataOnLocalStorage(blog)
+    }
     return (
         <div>
             <div className="max-w-2xl px-6 py-16 mx-auto space-y-12">
@@ -36,6 +40,9 @@ const BlogDetails = () => {
                                 <span>Author</span>
                             </NavLink>
                     
+                       <div onClick={()=>handleBookMark(blogDetailData)} className="bg-slate-400 ml-4 bg-opacity-50 cursor-pointer hover:scale-105 transition overflow-hidden p-3 rounded-full hover:bg-opacity-75">
+                       <MdBookmarkAdd className="text-secondary" size={20} />
+                       </div>
                         </div>
                     </div>
                     <Outlet></Outlet>
