@@ -8,6 +8,9 @@ import Layout from './Pages/Layout';
 import Hero from './Components/Hero';
 import Blogs from './Components/Blogs';
 import Bookmarks from './Components/Bookmarks';
+import BlogDetails from './Components/BlogDetails';
+import Content from './Components/Content';
+import Author from './Components/Author';
 
 let router=createBrowserRouter([
   {
@@ -22,6 +25,22 @@ let router=createBrowserRouter([
         path:'/blogs',
         loader:()=>fetch('https://dev.to/api/articles?per_page=200&top=7'),
         element:<Blogs></Blogs>
+      },
+      {
+        path:'/blog/:id',
+        loader:({params})=>fetch(`https://dev.to/api/articles/${params?.id}`),
+        element:<BlogDetails></BlogDetails>,
+        children:[
+          {
+         path:'',
+         loader:({params})=>fetch(`https://dev.to/api/articles/${params?.id}`),
+           element:<Content></Content>
+          },
+          {
+            path:'author',
+            element:<Author></Author>
+          }
+        ]
       },
       {
         path:'/bookmarks',

@@ -4,7 +4,6 @@ import BlogCard from "./BlogCard";
 
 const Blogs = () => {
     let blogCardData = useLoaderData();
-    console.log(blogCardData)
     return (
         <div className="container py-6 max-w-6xl mx-auto">
             <section className="dark:bg-gray-100 dark:text-gray-800">
@@ -22,7 +21,7 @@ const Blogs = () => {
             </section>
            <div className="grid md:grid-cols-3 justify-center items-center px-6  gap-5  ">
            {
-                blogCardData.map(cardInfo => <BlogCard cardInfo={cardInfo} key={cardInfo.id}></BlogCard>)
+                blogCardData.slice(1,blogCardData.length).map(cardInfo => <BlogCard cardInfo={cardInfo} key={cardInfo.id}></BlogCard>)
             }
            </div> 
         </div>
